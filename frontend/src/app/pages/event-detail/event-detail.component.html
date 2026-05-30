@@ -1,0 +1,26 @@
+<div class="container mx-auto p-8 max-w-4xl" *ngIf="evento">
+  <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+    <div class="h-64 bg-indigo-600 flex items-center justify-center text-white text-6xl">
+      {{ evento.categoria === 'Musica' ? '🎸' : '📖' }}
+    </div>
+    
+    <div class="p-8">
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-4xl font-bold text-gray-900">{{ evento.titolo }}</h1>
+        <span class="text-2xl font-bold text-green-600">{{ evento.prezzo | currency:'EUR' }}</span>
+      </div>
+      
+      <p class="text-gray-600 text-lg mb-6">{{ evento.descrizione }}</p>
+      
+      <div class="grid grid-cols-2 gap-4 mb-8 text-gray-500">
+        <div class="bg-gray-50 p-4 rounded-xl">📍 Luogo: <span class="font-bold text-gray-800">{{ evento.luogo }}</span></div>
+        <div class="bg-gray-50 p-4 rounded-xl">📅 Data: <span class="font-bold text-gray-800">{{ evento.data_evento | date:'short' }}</span></div>
+        <div class="bg-gray-50 p-4 rounded-xl">🎟️ Posti: <span class="font-bold text-gray-800">{{ evento.posti_disponibili }}</span></div>
+      </div>
+
+      <button (click)="iscriviti()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-xl hover:bg-indigo-700 shadow-lg transition">
+        Iscriviti Ora
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 export const environment = {
   production: false,
-  apiUrl: 'METTI_QUI_URL_PORTA_5000/api',
+  apiUrl: 'https://TUO_URL_CODESPACE_5000.app.github.dev/api',
   keycloak: {
-    url: 'METTI_QUI_URL_PORTA_8080',
+    url: 'https://TUO_URL_CODESPACE_8080.app.github.dev',
     realm: 'eventhub',
     clientId: 'eventhub-frontend'
   }

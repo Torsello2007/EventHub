@@ -1,0 +1,20 @@
+<div class="container mx-auto p-8 max-w-2xl">
+  <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+    <div class="flex items-center space-x-4 mb-8">
+      <div class="bg-indigo-600 text-white p-4 rounded-full text-3xl">👤</div>
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900">Il mio Profilo</h1>
+        <p class="text-gray-500">Benvenuto nella tua area riservata</p>
+      </div>
+    </div>
+    <div class="space-y-4">
+      <div class="flex justify-between border-b pb-2">
+        <span class="font-semibold text-gray-700">Username:</span>
+        <span class="text-indigo-600 font-bold">{{ auth.getUsername() }}</span>
+      </div>
+    </div>
+    <button (click)="auth.logout()" class="mt-8 w-full bg-red-50 text-red-600 py-3 rounded-xl font-bold hover:bg-red-100 transition">
+      Disconnetti
+    </button>
+  </div>
+</div>
