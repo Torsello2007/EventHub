@@ -6,7 +6,6 @@ load_dotenv()
 
 class DatabaseWrapper:
     def __init__(self):
-        # Leggiamo i dati dal file .env tramite os.getenv
         self.host = os.getenv("DB_HOST")
         self.port = int(os.getenv("DB_PORT"))
         self.user = os.getenv("DB_USER")
@@ -23,11 +22,30 @@ class DatabaseWrapper:
             cursorclass=pymysql.cursors.DictCursor
         )
 
-    def test_connection(self):
+    def select(self, query, params=None):
+        conn = self.__get_connection()
         try:
-            conn = self.__get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute(query, params)
+                return cursor.fetchall()
+        finally:
             conn.close()
-            return True
-        except Exception as e:
-            print(f"Errore connessione: {e}")
-            return False
+
+    def select_one(self, query, params=None):
+        conn = self.__get_connection()
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(query, params)
+                return cursor.fetchone()
+        finally:
+            conn.close()
+
+    def execute(self, query, params=None):
+        conn = self.__get_connection()
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(query, params)
+                conn.commit()
+                return cursor.lastrowid
+        finally:
+            conn.close()
