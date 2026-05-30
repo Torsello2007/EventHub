@@ -1,0 +1,30 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-3xl font-extrabold mb-8 text-gray-800">Prossimi Eventi</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    @for (evento of eventi; track evento.id) {
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="h-48 bg-indigo-100 flex items-center justify-center text-indigo-300">
+          <!-- Qui andrà l'immagine, per ora mettiamo un placeholder -->
+          <span class="text-5xl">📅</span>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2 py-1 rounded">
+              {{ evento.categoria }}
+            </span>
+            <span class="text-lg font-bold text-green-600">{{ evento.prezzo | currency:'EUR' }}</span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">{{ evento.titolo }}</h2>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ evento.descrizione }}</p>
+          <div class="flex items-center text-gray-500 text-xs space-x-4">
+            <span>📍 {{ evento.luogo }}</span>
+            <span>🕒 {{ evento.data_evento | date:'shortDate' }}</span>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p class="text-center text-gray-500 col-span-full py-12">Nessun evento in programma.</p>
+    }
+  </div>
+</div>
