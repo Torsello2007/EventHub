@@ -7,16 +7,13 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.isLoggedIn()) {
-    // Se è richiesta una verifica del ruolo
-    const requiredRole = route.data['role'];
+    const requiredRole = route.data?.['role'];
     if (requiredRole && !authService.hasRole(requiredRole)) {
-      router.navigate(['/']); // Se non ha il ruolo, torna in home
+      router.navigate(['/']);
       return false;
     }
     return true;
   }
-
-  // Se non è loggato, avvia il login
   authService.login();
   return false;
 };

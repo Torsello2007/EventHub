@@ -1,36 +1,13 @@
 <div class="container mx-auto p-8">
   <h1 class="text-3xl font-bold mb-8 text-red-600">Pannello Amministratore</h1>
-
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <!-- Gestione Utenti -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg">
-      <h2 class="text-xl font-bold mb-4 border-b pb-2">Gestione Utenti</h2>
-      <ul class="divide-y">
-        @for (u of utenti; track u.username) {
-          <div class="py-3 flex justify-between items-center">
-            <span class="font-medium">{{ u.username }}</span>
-            <button (click)="banUtente(u.username)" class="bg-red-100 text-red-600 px-3 py-1 rounded-lg text-sm hover:bg-red-200">
-              Banna
-            </button>
-          </div>
-        }
-      </ul>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-red-500">
+      <h2 class="text-xl font-bold mb-4">Gestione Utenti</h2>
+      <p class="text-gray-500 text-sm">Lista utenti registrati e opzioni di moderazione.</p>
     </div>
-
-    <!-- Moderazione Recensioni -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg">
-      <h2 class="text-xl font-bold mb-4 border-b pb-2">Moderazione Recensioni</h2>
-      <ul class="divide-y">
-        @for (r of recensioni; track r.id) {
-          <div class="py-3">
-            <div class="flex justify-between">
-              <span class="text-xs font-bold text-gray-400">{{ r.username_utente }}</span>
-              <button (click)="deleteRecensione(r.id)" class="text-red-500 text-xs font-bold uppercase">Elimina</button>
-            </div>
-            <p class="text-sm mt-1">"{{ r.commento }}"</p>
-          </div>
-        }
-      </ul>
+    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-orange-500">
+      <h2 class="text-xl font-bold mb-4">Recensioni Segnalate</h2>
+      <p class="text-gray-500 text-sm">Controlla e modera i commenti degli utenti.</p>
     </div>
   </div>
 </div>
